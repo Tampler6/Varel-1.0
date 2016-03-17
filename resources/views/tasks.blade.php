@@ -1,6 +1,6 @@
 <!-- resources/views/tasks.blade.php -->
 
-@extends('layouts.app')
+@extends('layouts.inter')
 
 @section('content')
 
