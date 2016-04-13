@@ -34,9 +34,26 @@ Route::group(['middleware' => ['web']], function () {
     Route::auth();
     
     Route::get('/', 'TaskController@index');
+    
+    /*
+    Route::get('/closure', function(){
+        
+        return "news";
+       
+    });
+    */
+    Route::get('/closure/named', [
+            "as" => "closure", 
+            "uses" => "Closure\Closure@closure",
+        ]
+    );
+    
     Route::get('/tasks', 'TaskController@index');
     Route::post('/task', 'TaskController@store');
     Route::delete('/task/{task}', 'TaskController@destroy');
     
+    Route::get('redirect', function(){
+        return redirect()->route('closure');
+    });
     
 });
