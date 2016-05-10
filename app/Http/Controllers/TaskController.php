@@ -36,6 +36,7 @@ class TaskController extends Controller
     
     public function store(Request $request)
     {
+        
         $this->validate($request, [
           "name" => "required|max:255"
         ]);
@@ -43,6 +44,8 @@ class TaskController extends Controller
         $request->user()->tasks()->create([
             'name' => $request->name,
         ]);
+        
+        $name = $request->input("name");
         
         return redirect("/tasks");
         
